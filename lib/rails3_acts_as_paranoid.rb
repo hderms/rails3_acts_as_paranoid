@@ -8,7 +8,7 @@ require 'acts_as_paranoid/relation'
 
 
 module ActsAsParanoid
-  def self.included?
+  def self.extended
     class_attribute :paranoid_skipped
     self.paranoid_skipped = false
   end
