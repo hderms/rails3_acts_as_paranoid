@@ -8,7 +8,7 @@ require 'acts_as_paranoid/relation'
 
 
 module ActsAsParanoid
-  def included? 
+  def included?
     class_attribute :paranoid_skipped
     self.paranoid_skipped = false
   end
@@ -24,9 +24,12 @@ module ActsAsParanoid
     self.paranoid_skipped = true
   end
 
+  def skipped_acts_as_paranoid?
+    self.paranoid_skipped
+  end
   def acts_as_paranoid(options = {})
     raise ArgumentError, "Hash expected, got #{options.class.name}" if not options.is_a?(Hash) and not options.empty?
-    unless self.paranoid_skipped?
+    unless skipped_acts_as_paranoid?
       class_attribute :paranoid_configuration, :paranoid_column_reference
 
       self.paranoid_configuration = { :column => "deleted_at", :column_type => "time", :recover_dependent_associations => true, :dependent_recovery_window => 2.minutes }
