@@ -17,8 +17,8 @@ module ActsAsParanoid
     include ActsAsParanoid::Validations
   end
   def skip_acts_as_paranoid
-    class_attribute :paranoid_skipped
-    self.paranoid_skipped
+    class_attribute :paranoid_skipped?
+    self.paranoid_skipped? = true
   end
 
   def acts_as_paranoid(options = {})
