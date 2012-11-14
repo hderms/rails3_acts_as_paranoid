@@ -28,7 +28,7 @@ module ActsAsParanoid
 
   def acts_as_paranoid(options = {})
     raise ArgumentError, "Hash expected, got #{options.class.name}" if not options.is_a?(Hash) and not options.empty?
-    puts "paranoid skipped #{self.paranoid_skipped}
+    puts "paranoid skipped #{self.paranoid_skipped}"
     unless self.paranoid_skipped
       class_attribute :paranoid_configuration, :paranoid_column_reference
 
