@@ -11,6 +11,7 @@ module ActsAsParanoid
   def self.extended(base)
       base.class_attribute :paranoid_skipped
       base.paranoid_skipped = false
+      debugger
   end
 
   def paranoid?
