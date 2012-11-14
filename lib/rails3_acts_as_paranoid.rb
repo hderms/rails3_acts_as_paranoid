@@ -9,10 +9,10 @@ require 'acts_as_paranoid/relation'
 
 module ActsAsParanoid
   def self.extended(base)
-    base.class_eval do
-    class_attribute :paranoid_skipped
-    self.paranoid_skipped = false
-    end
+      base.class_attribute :paranoid_skipped
+      base.class_eval do
+        paranoid_skipped = false
+      end
   end
 
   def paranoid?
@@ -28,6 +28,7 @@ module ActsAsParanoid
 
   def acts_as_paranoid(options = {})
     raise ArgumentError, "Hash expected, got #{options.class.name}" if not options.is_a?(Hash) and not options.empty?
+    puts "paranoid skipped #{self.paranoid_skipped}
     unless self.paranoid_skipped
       class_attribute :paranoid_configuration, :paranoid_column_reference
 
