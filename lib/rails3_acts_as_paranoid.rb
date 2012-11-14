@@ -8,6 +8,10 @@ require 'acts_as_paranoid/relation'
 
 
 module ActsAsParanoid
+  def included? 
+    class_attribute :paranoid_skipped?
+    self.paranoid_skipped? = false
+  end
 
   def paranoid?
     self.included_modules.include?(ActsAsParanoid::Core)
@@ -17,7 +21,6 @@ module ActsAsParanoid
     include ActsAsParanoid::Validations
   end
   def skip_acts_as_paranoid
-    class_attribute :paranoid_skipped?
     self.paranoid_skipped? = true
   end
 
