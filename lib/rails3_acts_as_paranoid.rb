@@ -8,11 +8,9 @@ require 'acts_as_paranoid/relation'
 
 
 module ActsAsParanoid
-  def self.extended(base)
-    base.instance_eval do 
+  def self.extended
     class_attribute :paranoid_skipped
     base.paranoid_skipped = false
-    end
   end
 
   def paranoid?
